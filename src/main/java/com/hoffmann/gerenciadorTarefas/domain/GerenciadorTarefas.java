@@ -1,13 +1,15 @@
 package com.hoffmann.gerenciadorTarefas.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -20,14 +22,15 @@ public class GerenciadorTarefas  implements Serializable{
 	private Integer id;
 	private String titulo;
 	private String descricao;
-	private LocalDateTime dataParaFinalizar;
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date dataParaFinalizar;
 	private Boolean finalizado = false;
 	
 	public GerenciadorTarefas () {
 		super();
 	}
 
-	public GerenciadorTarefas(Integer id, String titulo, String descricao, LocalDateTime dataParaFinalizar,
+	public GerenciadorTarefas(Integer id, String titulo, String descricao, Date dataParaFinalizar,
 			Boolean finalizado) {
 		super();
 		this.id = id;
@@ -61,11 +64,11 @@ public class GerenciadorTarefas  implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataParaFinalizar() {
+	public Date getDataParaFinalizar() {
 		return dataParaFinalizar;
 	}
 
-	public void setDataParaFinalizar(LocalDateTime dataParaFinalizar) {
+	public void setDataParaFinalizar(Date dataParaFinalizar) {
 		this.dataParaFinalizar = dataParaFinalizar;
 	}
 
